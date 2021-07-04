@@ -39,13 +39,13 @@ namespace ChessDial
 
     public abstract class Pieces
     {
-        // Each int [] entry in the list returned by GetNextMoves consists of two elements - the y axis co-ordinate [0] and the x axis co-ordinate [1] relating to an entry in the Keys array of 
-        // Keypad objects.
+        // Each int [] entry in the list returned by GetNextMoves consists of two elements - the y axis co-ordinate [0] and the x axis co-ordinate [1] relating to an entry in 
+        // the Keys array of Keypad objects.
         public abstract List<int[]> GetNextMoves(Keypad keypad, int yAxis, int xAxis);
         public abstract Dictionary<int[], List<int[]>> FindNextMoveDict { get; }
 
-        // Returns a dictionary whose key is the co-ordinates of an element in the Keypad object's Keys array and whose value is a list of available next moves for those co-ordinates (also
-        // expressed as co-ordinates). 
+        // Returns a dictionary whose key is the co-ordinates of an element in the Keypad object's Keys array and whose value is a list of available next moves for those 
+        // co-ordinates (also expressed as co-ordinates). 
         public Dictionary<int[], List<int[]>> GetDict(Keypad keypad)
         {
             Dictionary<int[], List<int[]>> coOrdinatesToNextMoveDict = new Dictionary<int[], List<int[]>>();
@@ -483,26 +483,27 @@ namespace ChessDial
                             continue;
                         }
                         /*
-                         *  Array co-ordinates for the starting digit and for subsquent moves are stored in a list of co-ordinates. The co-ordinates are stored as int arrays in the form 
-                         *  [y, x], where y and x are co-ordinates for the Keypad object's Keys array. The first co-ordinate array in the list is the starting key's co-ordinates, and the 
-                         *  arrays for subsequent moves are added to the end of the list. 
+                         *  Array co-ordinates for the starting digit and for subsquent moves are stored in a list of co-ordinates. The co-ordinates are stored as int arrays in 
+                         *  the form [y, x], where y and x are co-ordinates for the Keypad object's Keys array. The first co-ordinate array in the list is the starting key's 
+                         *  co-ordinates, and the arrays for subsequent moves are added to the end of the list. 
                          *  
                          *  The co-ordinate arrays for the moves relating to the current starting co-ordinate and its moves are stored in 'combinationsSoFar'. 
                          *  
-                         *  Where there is a valid next move for a list of co-ordinates in 'combinationsSoFar', the code below makes a clone of that list and appends the next move's 
-                         *  co-ordinates to that clone. It puts this in a lists of lists, 'tempCombinationList'. It does this for every valid next move relating to the list of co-ordinates
-                         *  in question, e.g. if there are 4 possible next moves, there will be four cloned lists, each with a different appendages, all of which are added to 
-                         *  'tempCombinationList'.  
+                         *  Where there is a valid next move for a list of co-ordinates in 'combinationsSoFar', the code below makes a clone of that list and appends the next 
+                         *  move's co-ordinates to that clone. It puts this in a lists of lists, 'tempCombinationList'. It does this for every valid next move relating 
+                         *  to the list of co-ordinates in question, e.g. if there are 4 possible next moves, there will be four cloned lists, each with a different 
+                         *  appendages, all of which are added to 'tempCombinationList'.  
                          *  
-                         *  Once this process has been completed for all the lists in 'combinationsSoFar', 'tempCombinationList' will contain a list of all the combinations of moves where a 
-                         *  next move was possible (and nothing else). 'combinationsSoFar' is then set equal 'tempCombinationList', meaning it now contains that data and only that data. 
+                         *  Once this process has been completed for all the lists in 'combinationsSoFar', 'tempCombinationList' will contain a list of all the combinations 
+                         *  of moves where a next move was possible (and nothing else). 'combinationsSoFar' is then set equal 'tempCombinationList', meaning it now contains 
+                         *  that data and only that data. 
                          *  
-                         *  'tempCombinationList' is garbage collected after its data is transferred to 'combinationsSoFar', and re-created during the next 'while' loop, meaning that it will 
-                         *  start out in an empty state during the next loop. 
+                         *  'tempCombinationList' is garbage collected after its data is transferred to 'combinationsSoFar', and re-created during the next 'while' loop, 
+                         *  meaning that it will start out in an empty state during the next loop. 
                          *  
-                         *  Once the digit combinations for the current starting co-ordinate have been produced, each list of arrays in 'combinationsSoFar' are converted into a string and 
-                         *  the string stored in the master list of strings that this method returns. The 'combinationsSoFar' list expires when the 'for' loop moves onto the next starting 
-                         *  co-ordinate and is subsequently re-created (with the process repeating). 
+                         *  Once the digit combinations for the current starting co-ordinate have been produced, each list of arrays in 'combinationsSoFar' are converted into a 
+                         *  string and the string stored in the master list of strings that this method returns. The 'combinationsSoFar' list expires when the 'for' loop 
+                         *  moves onto the next starting co-ordinate and is subsequently re-created (with the process repeating). 
                          *  
                          */
 
