@@ -7,8 +7,11 @@ INTRODUCTION
 This program, which is written in C#, takes a keypad as shown below:
 
 123
+
 456
+
 789
+
 x0#
 
 The program takes each number as a starting number in turn. From that number, it can move from button to button in accorance with the moves of a chess piece specified by the user. 
